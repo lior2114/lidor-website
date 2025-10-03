@@ -162,7 +162,7 @@
 .sections {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   justify-items: center;
   max-width: 100%;
   width: 100%;
@@ -385,6 +385,8 @@
     transform: translateX(-50%);
     width: 100%;
     box-sizing: border-box;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
   }
   
   .title {
