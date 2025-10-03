@@ -1,0 +1,640 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  direction: rtl;
+  text-align: right;
+  background: #000;
+}
+
+.blurOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(1px);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.whatsappButton {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.whatsappLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #25D366;
+  color: white;
+  padding: 16px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.whatsappLink:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+  background: #20C55A;
+}
+
+.whatsappIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.whatsappText {
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  direction: rtl;
+  box-sizing: border-box;
+  white-space: nowrap;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9), 0 0 20px rgba(255, 255, 255, 0.3);
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  direction: rtl;
+  letter-spacing: 1px;
+  line-height: 1.3;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(0, 123, 255, 0.8);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 123, 255, 0.6);
+  position: relative;
+  overflow: hidden;
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(138, 43, 226, 0.1));
+  z-index: -1;
+}
+
+.subtitle {
+  font-size: 1.8rem;
+  color: #f0f0f0;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 255, 255, 0.2);
+  font-style: italic;
+  direction: rtl;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  opacity: 0.9;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(0, 123, 255, 0.6);
+  border-radius: 15px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 25px rgba(0, 123, 255, 0.4);
+  position: relative;
+  overflow: hidden;
+  display: block;
+  max-width: fit-content;
+  margin: 0 auto 3rem auto;
+  transition: all 0.3s ease;
+}
+
+.subtitle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 35px rgba(0, 123, 255, 0.6);
+  border-color: rgba(0, 123, 255, 0.8);
+}
+
+.sections {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  justify-items: center;
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.section {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 25px rgba(255, 255, 255, 0.4), 0 0 15px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(138, 43, 226, 0.1));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.section:hover::before {
+  opacity: 1;
+}
+
+.section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 35px rgba(255, 255, 255, 0.6), 0 0 20px rgba(0, 123, 255, 0.5);
+  border-color: rgba(255, 255, 255, 1);
+}
+
+.sectionTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 15px rgba(255, 255, 255, 0.2);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 0.8rem;
+  text-align: right;
+  direction: rtl;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  position: relative;
+  box-sizing: border-box;
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sectionTitle::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  right: 0;
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
+}
+
+.sectionText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ffffff;
+  text-align: right;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  direction: rtl;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.topicsList {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.topicsList li {
+  background: rgba(255, 255, 255, 0.1);
+  margin: 0.5rem 0;
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  border-right: 4px solid rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  text-align: right;
+  direction: rtl;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2), 0 0 15px rgba(255, 255, 255, 0.3), 0 0 8px rgba(0, 123, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  line-height: 1.6;
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.topicsList li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.1), rgba(138, 43, 226, 0.1));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.topicsList li:hover::before {
+  opacity: 1;
+}
+
+.topicsList li:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 0 0 25px rgba(255, 255, 255, 0.5), 0 0 15px rgba(0, 123, 255, 0.4);
+  border-right-color: rgba(255, 255, 255, 1);
+  transform: translateX(-5px);
+}
+
+/* Tablet Responsive */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .content {
+    padding: 1.5rem;
+    max-width: 1000px;
+    box-sizing: border-box;
+  }
+  
+  .title {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.8px;
+  }
+  
+  .subtitle {
+    font-size: 1.4rem;
+    margin: 0 auto 2.5rem auto;
+    text-align: center;
+    letter-spacing: 0.3px;
+    display: block;
+    max-width: fit-content;
+  }
+  
+  .sections {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .section {
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+  
+  .sectionTitle {
+    font-size: 1.8rem;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+  
+  .sectionText {
+    font-size: 1.1rem;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+  
+  .topicsList {
+    text-align: center;
+  }
+  
+  .topicsList li {
+    text-align: center;
+    letter-spacing: 0.1px;
+  }
+  
+  .whatsappButton {
+    bottom: 25px;
+    right: 25px;
+  }
+  
+  .whatsappLink {
+    padding: 14px 22px;
+    font-size: 15px;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .content {
+    padding: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .title {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin: 0 auto 2rem auto;
+    text-align: center;
+    letter-spacing: 0.2px;
+    display: block;
+    max-width: fit-content;
+  }
+  
+  .sections {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    justify-items: center;
+    padding: 0 0.5rem;
+  }
+  
+  .section {
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+  
+  .sectionText {
+    font-size: 1rem;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+    line-height: 1.5;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+  
+  .topicsList {
+    text-align: center;
+  }
+  
+  .topicsList li {
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    letter-spacing: 0.1px;
+  }
+  
+  .whatsappButton {
+    bottom: 20px;
+    right: 20px;
+  }
+  
+  .whatsappLink {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  
+  .whatsappText {
+    display: none;
+  }
+}
+
+/* Small Mobile Responsive */
+@media (max-width: 480px) {
+  .content {
+    padding: 0.5rem;
+    left: 0;
+    transform: none;
+    width: 100%;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+  
+  .subtitle {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+    margin: 0 auto 1.5rem auto;
+    text-align: center;
+    letter-spacing: 0.1px;
+    display: block;
+    max-width: fit-content;
+  }
+  
+  .sections {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .section {
+    padding: 1.2rem;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+  }
+  
+  .sectionTitle {
+    font-size: 1.3rem;
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+  
+  .sectionText {
+    font-size: 0.9rem;
+    text-align: center;
+    letter-spacing: 0.1px;
+  }
+  
+  .topicsList {
+    text-align: center;
+  }
+  
+  .topicsList li {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.6rem;
+    text-align: center;
+    letter-spacing: 0.05px;
+  }
+  
+  .whatsappButton {
+    bottom: 15px;
+    right: 15px;
+  }
+  
+  .whatsappLink {
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+/* Large Desktop Responsive */
+@media (min-width: 1400px) {
+  .content {
+    max-width: 1400px;
+    padding: 3rem;
+  }
+  
+  .title {
+    font-size: 4rem;
+    text-align: center;
+    letter-spacing: 1.2px;
+  }
+  
+  .subtitle {
+    font-size: 1.8rem;
+    text-align: center;
+    letter-spacing: 0.5px;
+    margin: 0 auto 3rem auto;
+    display: block;
+    max-width: fit-content;
+  }
+  
+  .sections {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    padding: 0 2rem;
+  }
+  
+  .section {
+    padding: 3rem;
+    box-sizing: border-box;
+  }
+  
+  .sectionTitle {
+    font-size: 2.2rem;
+    text-align: center;
+    letter-spacing: 0.6px;
+  }
+  
+  .sectionText {
+    font-size: 1.3rem;
+    text-align: center;
+    letter-spacing: 0.4px;
+  }
+  
+  .topicsList {
+    text-align: center;
+  }
+  
+  .topicsList li {
+    text-align: center;
+    letter-spacing: 0.3px;
+  }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .title {
+    font-size: 2.2rem;
+    text-align: center;
+    letter-spacing: 0.4px;
+  }
+  
+  .subtitle {
+    font-size: 1.3rem;
+    text-align: center;
+    letter-spacing: 0.2px;
+    margin: 0 auto 2rem auto;
+    display: block;
+    max-width: fit-content;
+  }
+  
+  .sections {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .section {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  
+  .sectionTitle {
+    text-align: center;
+    letter-spacing: 0.2px;
+  }
+  
+  .sectionText {
+    text-align: center;
+    letter-spacing: 0.1px;
+  }
+  
+  .topicsList {
+    text-align: center;
+  }
+  
+  .topicsList li {
+    text-align: center;
+    letter-spacing: 0.05px;
+  }
+}
