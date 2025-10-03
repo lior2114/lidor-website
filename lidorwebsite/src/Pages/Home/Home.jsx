@@ -7,7 +7,7 @@ export function Home(){
         <div className={styles.container}>
             <LightRays
                 raysOrigin="top-center"
-                raysColor="#00ffff"
+                raysColor="#ffffff"
                 raysSpeed={1.5}
                 lightSpread={0.8}
                 rayLength={1.2}

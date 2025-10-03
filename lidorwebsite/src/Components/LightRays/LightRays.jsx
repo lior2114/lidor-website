@@ -387,9 +387,23 @@ void main() {
       mouseRef.current = { x, y };
     };
 
+    const handleTouchMove = e => {
+      if (!containerRef.current || !rendererRef.current) return;
+      e.preventDefault();
+      const rect = containerRef.current.getBoundingClientRect();
+      const touch = e.touches[0];
+      const x = (touch.clientX - rect.left) / rect.width;
+      const y = (touch.clientY - rect.top) / rect.height;
+      mouseRef.current = { x, y };
+    };
+
     if (followMouse) {
       window.addEventListener('mousemove', handleMouseMove);
-      return () => window.removeEventListener('mousemove', handleMouseMove);
+      window.addEventListener('touchmove', handleTouchMove, { passive: false });
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove);
+        window.removeEventListener('touchmove', handleTouchMove);
+      };
     }
   }, [followMouse]);
 
