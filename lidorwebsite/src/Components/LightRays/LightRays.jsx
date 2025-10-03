@@ -93,25 +93,8 @@ const LightRays = ({
 
       if (!containerRef.current) return;
 
-      // Check if WebGL is supported
-      const canvas = document.createElement('canvas');
-      const testGl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
-      if (!testGl) {
-        console.warn('WebGL not supported, skipping LightRays effect');
-        return;
-      }
-
-      // Check if device is mobile and has limited performance
-      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
-      
-      if (isMobile && isLowEndDevice) {
-        console.warn('Low-end mobile device detected, skipping LightRays effect for performance');
-        return;
-      }
-
       const renderer = new Renderer({
-        dpr: Math.min(window.devicePixelRatio, isMobile ? 1 : 2),
+        dpr: Math.min(window.devicePixelRatio, 2),
         alpha: true
       });
       rendererRef.current = renderer;
@@ -294,16 +277,7 @@ void main() {
 
         try {
           renderer.render({ scene: mesh });
-          // Reduce frame rate on mobile for better performance
-          const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-          if (isMobile) {
-            // Run at 30fps on mobile instead of 60fps
-            setTimeout(() => {
-              animationIdRef.current = requestAnimationFrame(loop);
-            }, 1000 / 30);
-          } else {
-            animationIdRef.current = requestAnimationFrame(loop);
-          }
+          animationIdRef.current = requestAnimationFrame(loop);
         } catch (error) {
           console.warn('WebGL rendering error:', error);
           return;
@@ -413,23 +387,9 @@ void main() {
       mouseRef.current = { x, y };
     };
 
-    const handleTouchMove = e => {
-      if (!containerRef.current || !rendererRef.current) return;
-      e.preventDefault();
-      const rect = containerRef.current.getBoundingClientRect();
-      const touch = e.touches[0];
-      const x = (touch.clientX - rect.left) / rect.width;
-      const y = (touch.clientY - rect.top) / rect.height;
-      mouseRef.current = { x, y };
-    };
-
     if (followMouse) {
       window.addEventListener('mousemove', handleMouseMove);
-      window.addEventListener('touchmove', handleTouchMove, { passive: false });
-      return () => {
-        window.removeEventListener('mousemove', handleMouseMove);
-        window.removeEventListener('touchmove', handleTouchMove);
-      };
+      return () => window.removeEventListener('mousemove', handleMouseMove);
     }
   }, [followMouse]);
 

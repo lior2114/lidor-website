@@ -7,21 +7,4 @@
   pointer-events: none;
   z-index: 0;
   overflow: hidden;
-  /* Fallback background for when WebGL fails */
-  background: linear-gradient(135deg, 
-    rgba(0, 123, 255, 0.1) 0%, 
-    rgba(138, 43, 226, 0.1) 50%, 
-    rgba(0, 123, 255, 0.1) 100%
-  );
-}
-
-/* Mobile fallback when WebGL is not supported */
-@media (max-width: 768px) {
-  .light-rays-container {
-    background: linear-gradient(135deg, 
-      rgba(0, 123, 255, 0.05) 0%, 
-      rgba(138, 43, 226, 0.05) 50%, 
-      rgba(0, 123, 255, 0.05) 100%
-    );
-  }
 }
